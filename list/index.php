@@ -18,6 +18,10 @@ $result = $conn->query($sql);
 if (!$conn->error && mysqli_num_rows($result) > 0) {
     if (mysqli_num_rows($result) > 0) {
         $listname = mysqli_fetch_assoc($result)["name"];
+       
+        if (!empty($listname)) {
+            $listname = htmlspecialchars($listname);
+        }
     }
 }
 ?>

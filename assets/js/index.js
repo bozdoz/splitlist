@@ -3,13 +3,8 @@ function timeFormat(date) {
     if (date.toDateString() === nowDate.toDateString()) {
         return "Today " + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     } else {
-        date.setHours(0);
-        date.setMinutes(0);
-        date.setSeconds(0, 0);
-
-        nowDate.setHours(0);
-        nowDate.setMinutes(0);
-        nowDate.setSeconds(0, 0);
+    date.setHours(0, 0, 0, 0);
+    nowDate.setHours(0, 0, 0, 0);
 
         let daysAgo = (nowDate.getTime() - date.getTime()) / (1000 * 60 * 60 * 24);
 
@@ -57,8 +52,10 @@ function loadRecentLists() {
             listItemEl.setAttribute("data-list-id", list.id);
             listItemEl.querySelector("a").setAttribute("href", "list/?id=" + list.id);
 
-            listItemEl.querySelector(".list-name").innerHTML = list.name;
-            listItemEl.querySelector(".list-last-edited").innerHTML = timeFormat(new Date(list.time));
+      listItemEl.querySelector(".list-name").innerText = list.name;
+      listItemEl.querySelector(".list-last-edited").innerText = timeFormat(
+        new Date(list.time)
+      );
 
             listItemEl.querySelector(".remove-button").addEventListener("click", removeRecentList);
 

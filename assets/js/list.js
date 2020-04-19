@@ -49,9 +49,9 @@ function ajaxGetList(id, lastedited, callback) {
 function refreshDom() {
     // Checks if list name has changed
     const listNameEl = document.getElementById("list-name");
-    if (listNameEl.innerHTML !== list.name) {
+  if (listNameEl.innerText !== list.name) {
         document.title = list.name + " - Splitlist";
-        listNameEl.innerHTML = list.name;
+    listNameEl.innerText = list.name;
         document.getElementById("edit-name-modal-input").value = list.name;
     }
 
@@ -358,7 +358,7 @@ function editListName() {
 
 function shareList() {
     const clipboardEl = document.getElementById("clipboard-placeholder");
-    const url = window.location.hostname + "/?i=" + listId;
+  const url = window.location.origin + "/?i=" + listId;
 
     // Copies the variable "url" to clipboard
     clipboardEl.innerHTML = url;
