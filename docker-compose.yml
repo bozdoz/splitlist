@@ -33,7 +33,7 @@ services:
     depends_on:
       - db
     environment:
-      PMA_HOST:
+      PMA_HOST: db
       PMA_USER: db_user
       PMA_PASSWORD: p4ssW0rd
 
